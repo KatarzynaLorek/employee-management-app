@@ -1,0 +1,12 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 400px;
+}
+
+@media (max-width: 767px) {
+  .table {
+    height: auto;
+  }
+}
