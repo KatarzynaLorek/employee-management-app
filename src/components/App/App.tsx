@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Header from '../NavBar/NavBar';
 import TableView from '../../views/TableView/TableView';
 import ChartView from '../../views/ChartView/ChartView';
