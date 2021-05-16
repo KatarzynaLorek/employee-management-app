@@ -2,14 +2,18 @@ import React from 'react';
 import TableRow from './TableRow/TableRow';
 import './Table.scss';
 
-const Table: React.FC = () => (
+interface TableProps {
+  handleOpenUpdateForm: () => void;
+}
+
+const Table = ({ handleOpenUpdateForm }: TableProps): JSX.Element => (
   <div className="table">
-    <TableRow isTitle></TableRow>
-    <TableRow></TableRow>
-    <TableRow></TableRow>
-    <TableRow></TableRow>
-    <TableRow></TableRow>
-    <TableRow></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm} isTitle></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm}></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm}></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm}></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm}></TableRow>
+    <TableRow handleClick={handleOpenUpdateForm}></TableRow>
   </div>
 );
 
