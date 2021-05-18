@@ -2,14 +2,7 @@ import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 import { Action } from 'redux';
 import { RootState } from '../store';
-
-interface EmployeeData {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  department: 'accountancy' | 'IT' | 'sales' | 'marketing';
-  position: 'junior' | 'regular' | 'senior' | 'manager';
-}
+import { IResponseObject } from '../../types/responses';
 
 export const actionTypes = {
   fetchDataRequest: 'FETCH_DATA_REQUEST',
@@ -28,9 +21,9 @@ export const actionTypes = {
 
 export const url = 'https://60a13128d2855b00173b1bf7.mockapi.io/employees';
 
-let thunkAction: ThunkAction<Promise<any>, RootState, unknown, Action<any>>;
+type thunkAction = ThunkAction<Promise<any>, RootState, unknown, Action<any>>;
 
-export const fetchEmployeesData = (): typeof thunkAction => async (dispatch) => {
+export const fetchEmployeesData = (): thunkAction => async (dispatch) => {
   dispatch({ type: actionTypes.fetchDataRequest });
   try {
     const response = await axios.get(url);
@@ -44,7 +37,7 @@ export const fetchEmployeesData = (): typeof thunkAction => async (dispatch) => 
 };
 
 export const addEmployee =
-  (employeeData: EmployeeData): typeof thunkAction =>
+  (employeeData: IResponseObject): thunkAction =>
   async (dispatch) => {
     dispatch({ type: actionTypes.addEmployeeRequest });
     try {
@@ -59,7 +52,7 @@ export const addEmployee =
   };
 
 export const updateEmployee =
-  (employeeData: EmployeeData): typeof thunkAction =>
+  (employeeData: IResponseObject): thunkAction =>
   async (dispatch) => {
     dispatch({ type: actionTypes.updateEmployeeRequest });
     const id = employeeData.id;
@@ -75,7 +68,7 @@ export const updateEmployee =
   };
 
 export const removeEmployee =
-  (id: string | undefined): typeof thunkAction =>
+  (id?: string): thunkAction =>
   async (dispatch) => {
     dispatch({ type: actionTypes.removeEmployeeRequest });
     try {

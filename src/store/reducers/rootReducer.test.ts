@@ -1,15 +1,8 @@
 import rootReducer from './rootReducer';
 import { actionTypes } from '../actions/actions';
+import { IResponseObject } from '../../types/responses';
 
-interface EmployeeData {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  department: 'accountancy' | 'IT' | 'sales' | 'marketing';
-  position: 'junior' | 'regular' | 'senior' | 'manager';
-}
-
-const mockData: EmployeeData = {
+const mockData: IResponseObject = {
   id: '1',
   firstName: 'mockFirstName',
   lastName: 'mockLastName',
@@ -40,7 +33,7 @@ describe('rootReducer', () => {
   });
 
   it('handle UPDATE_EMPLOYEE_SUCCESS', () => {
-    const mockUpdatedData: EmployeeData = {
+    const mockUpdatedData: IResponseObject = {
       id: '1',
       firstName: 'mockFirstName',
       lastName: 'mockLastName',

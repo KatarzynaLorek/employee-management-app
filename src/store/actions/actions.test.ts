@@ -12,16 +12,9 @@ import { Action } from 'redux';
 import { RootState } from '../store';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { IResponseObject } from '../../types/responses';
 
-interface EmployeeData {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  department: 'accountancy' | 'IT' | 'sales' | 'marketing';
-  position: 'junior' | 'regular' | 'senior' | 'manager';
-}
-
-const mockData: EmployeeData = {
+const mockData: IResponseObject = {
   id: '1',
   firstName: 'mockFirstName',
   lastName: 'mockLastName',
@@ -55,7 +48,7 @@ describe('async actions', () => {
   it('creates FETCH_DATA_SUCCESS action when fetching employees has been done', async () => {
     mock.onGet(url).reply(200, mockData);
 
-    const expectedActions: Array<{ type: string; payload?: EmployeeData }> = [
+    const expectedActions: Array<{ type: string; payload?: IResponseObject }> = [
       { type: actionTypes.fetchDataRequest },
       { type: actionTypes.fetchDataSuccess, payload: mockData },
     ];
@@ -67,7 +60,7 @@ describe('async actions', () => {
   it('creates ADD_EMPLOYEE_SUCCESS action when adding new employee has been done', async () => {
     mock.onPost(url, mockData).reply(200, mockData);
 
-    const expectedActions: Array<{ type: string; payload?: EmployeeData }> = [
+    const expectedActions: Array<{ type: string; payload?: IResponseObject }> = [
       { type: actionTypes.addEmployeeRequest },
       { type: actionTypes.addEmployeeSuccess, payload: mockData },
     ];
@@ -79,7 +72,7 @@ describe('async actions', () => {
   it('creates UPDATE_EMPLOYEE_SUCCESS action when updating employee has been done', async () => {
     mock.onPut(`${url}/${mockId}`, mockData).reply(200, mockData);
 
-    const expectedActions: Array<{ type: string; payload?: EmployeeData }> = [
+    const expectedActions: Array<{ type: string; payload?: IResponseObject }> = [
       { type: actionTypes.updateEmployeeRequest },
       { type: actionTypes.updateEmployeeSuccess, payload: mockData },
     ];

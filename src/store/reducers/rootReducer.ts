@@ -1,19 +1,12 @@
 import { AnyAction, Reducer } from 'redux';
 import { actionTypes } from '../actions/actions';
+import { IResponseObject } from '../../types/responses';
 
-interface EmployeeData {
-  id?: string;
-  firstName: string;
-  lastName: string;
-  department: 'accountancy' | 'IT' | 'sales' | 'marketing';
-  position: 'junior' | 'regular' | 'senior' | 'manager';
+interface IState {
+  employees: IResponseObject[];
 }
 
-interface EmployeesState {
-  employees: EmployeeData[];
-}
-
-const initialState: EmployeesState = { employees: [] };
+const initialState: IState = { employees: [] };
 
 const rootReducer: Reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
@@ -24,7 +17,7 @@ const rootReducer: Reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.updateEmployeeSuccess:
       return {
         employees: [
-          ...state.employees.filter((item: EmployeeData) => item.id !== action.payload.id),
+          ...state.employees.filter((item: IResponseObject) => item.id !== action.payload.id),
           action.payload,
         ],
       };
