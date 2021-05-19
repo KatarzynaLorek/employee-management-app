@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './EmployeeForm.scss';
+import { IResponseObject } from '../../types/responses';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { updateEmployee, addEmployee } from '../../store/actions/actions';
 
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  department: 'accountancy' | 'IT' | 'sales' | 'marketing';
-  position: 'junior' | 'regular' | 'senior' | 'manager';
-}
-
-interface FormProps {
-  formType: 'add' | 'update';
+interface IFormProps {
   handleClose: () => void;
+  employeeData?: IResponseObject | null;
 }
 
-const EmployeeForm = ({ formType, handleClose }: FormProps): JSX.Element => {
-  const initialValues: FormValues = {
-    firstName: '',
-    lastName: '',
-    department: 'accountancy',
-    position: 'junior',
+const EmployeeForm = ({ handleClose, employeeData }: IFormProps): JSX.Element => {
+  const newID = String(useAppSelector((state) => state.rootReducer.employees.length) + 1);
+
+  const initialValues: IResponseObject = {
+    id: employeeData?.id || newID,
+    firstName: employeeData?.firstName || '',
+    lastName: employeeData?.lastName || '',
+    department: employeeData?.department || 'accountancy',
+    position: employeeData?.position || 'junior',
   };
 
-  const [values, setValues] = useState(initialValues);
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (newValues: FormValues, setSubmitting: (boolean: boolean) => void) => {
-    setValues(newValues);
+  const handleSubmit = (newValues: IResponseObject, setSubmitting: (boolean: boolean) => void) => {
+    employeeData ? dispatch(updateEmployee(newValues)) : dispatch(addEmployee(newValues));
     setSubmitting(false);
     handleClose();
   };
 
-  const validateTextInput = (values: FormValues) => {
+  const validateTextInput = (values: IResponseObject) => {
     const errors: { firstName?: string; lastName?: string } = {};
     if (!values.firstName) {
       errors.firstName = 'Required';
@@ -52,18 +51,21 @@ const EmployeeForm = ({ formType, handleClose }: FormProps): JSX.Element => {
           <i className="fas fa-times"></i>
         </button>
         <h1 className="form__title">
-          {formType === 'add' ? 'Add new employee' : 'Update Employee Data'}{' '}
+          {employeeData ? 'Update Employee Data' : 'Add new employee'}
         </h1>
         <Formik
           validate={validateTextInput}
-          initialValues={values}
-          onSubmit={(values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+          initialValues={initialValues}
+          onSubmit={(
+            values: IResponseObject,
+            { setSubmitting }: FormikHelpers<IResponseObject>,
+          ) => {
             handleSubmit(values, setSubmitting);
           }}
         >
           {({ errors, touched }) => (
             <Form
-              name={formType === 'add' ? 'addForm' : 'updateForm'}
+              name={employeeData ? 'updateForm' : 'addForm'}
               className="form__wrapper form__wrapper--inner"
             >
               <label className="form__label" htmlFor="firstName">
@@ -111,7 +113,7 @@ const EmployeeForm = ({ formType, handleClose }: FormProps): JSX.Element => {
                 <option value="manager">Manager</option>
               </Field>
               <button className="form__button form__button--submit" type="submit">
-                {formType === 'add' ? 'Submit' : 'Update'}
+                {employeeData ? 'Update' : 'Submit'}
               </button>
             </Form>
           )}
