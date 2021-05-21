@@ -11,6 +11,7 @@
   background-color: #77b28c;
   box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.18);
   transition: background-color 0.2s linear, color 0.2s linear;
+  z-index: 9999;
 
   &__title {
     height: 150px;
