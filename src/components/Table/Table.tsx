@@ -4,15 +4,25 @@ import './Table.scss';
 import { IResponseObject } from '../../types/responses';
 
 interface ITableProps {
-  handleOpenUpdateForm: (employee: IResponseObject | undefined) => void;
+  handleRemoveEmployee: (employee: IResponseObject) => Promise<any>;
+  handleOpenUpdateForm: (employee: IResponseObject) => void;
   tableData: IResponseObject[];
 }
 
-const Table = ({ handleOpenUpdateForm, tableData }: ITableProps): JSX.Element => (
+const Table = ({
+  handleOpenUpdateForm,
+  handleRemoveEmployee,
+  tableData,
+}: ITableProps): JSX.Element => (
   <div className="table">
-    <TableRow handleClick={() => null}></TableRow>
+    <TableRow isTitle />
     {tableData.map((item) => (
-      <TableRow key={item.id} employeeData={item} handleClick={handleOpenUpdateForm}></TableRow>
+      <TableRow
+        key={item.id}
+        employeeData={item}
+        handleOpenUpdateForm={handleOpenUpdateForm}
+        handleRemoveEmployee={handleRemoveEmployee}
+      ></TableRow>
     ))}
   </div>
 );

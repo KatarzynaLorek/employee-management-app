@@ -2,31 +2,26 @@ import React from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './EmployeeForm.scss';
 import { IResponseObject } from '../../types/responses';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { updateEmployee, addEmployee } from '../../store/actions/actions';
 
 interface IFormProps {
   handleClose: () => void;
+  handleSubmit: (newValues: IResponseObject, setSubmitting: (boolean: boolean) => void) => void;
   employeeData?: IResponseObject | null;
+  newID?: string;
 }
 
-const EmployeeForm = ({ handleClose, employeeData }: IFormProps): JSX.Element => {
-  const newID = String(useAppSelector((state) => state.rootReducer.employees.length) + 1);
-
+const EmployeeForm = ({
+  handleClose,
+  handleSubmit,
+  employeeData,
+  newID,
+}: IFormProps): JSX.Element => {
   const initialValues: IResponseObject = {
     id: employeeData?.id || newID,
     firstName: employeeData?.firstName || '',
     lastName: employeeData?.lastName || '',
     department: employeeData?.department || 'accountancy',
     position: employeeData?.position || 'junior',
-  };
-
-  const dispatch = useAppDispatch();
-
-  const handleSubmit = (newValues: IResponseObject, setSubmitting: (boolean: boolean) => void) => {
-    employeeData ? dispatch(updateEmployee(newValues)) : dispatch(addEmployee(newValues));
-    setSubmitting(false);
-    handleClose();
   };
 
   const validateTextInput = (values: IResponseObject) => {

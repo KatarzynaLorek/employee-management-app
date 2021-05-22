@@ -1,54 +1,62 @@
-import React, { useEffect, useState } from 'react';
-import EmployeeForm from '../../components/EmployeeForm/EmployeeForm';
+import React from 'react';
 import Table from '../../components/Table/Table';
-import { useAppSelector } from '../../hooks/reduxHooks';
 import './TableView.scss';
+import EmployeeForm from '../../components/EmployeeForm/EmployeeForm';
 import { IResponseObject } from '../../types/responses';
 
-const TableView: React.FC = () => {
-  const employeesData: IResponseObject[] = useAppSelector((state) => state.rootReducer.employees);
+export interface ITableView {
+  isAddFormOpen: boolean;
+  isUpdateFormOpen: boolean;
+  updatedEmployee: IResponseObject | null;
+  tableData: IResponseObject[];
+  handleChangeAddFormVisibility: () => void;
+  handleChangeUpdateFormVisibility: (employee?: IResponseObject) => void;
+  handlePageChange: (type: 'next' | 'prev') => void;
+  currentPage: number;
+  maxPageNumber: number;
+  handleSubmit: (newValues: IResponseObject, setSubmitting: (boolean: boolean) => void) => void;
+  handleRemoveEmployee: (employee: IResponseObject) => Promise<any>;
+  newID: string;
+}
 
-  const [isAddFormOpen, setAddFormOpen] = useState(false);
-  const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [maxPageNumber, setMaxPageNumber] = useState(Math.ceil(employeesData.length / 5));
-  const [tableData, setTableData] = useState<IResponseObject[]>([]);
-  const [updatedEmployee, setUpdatedEmployee] = useState<IResponseObject | null>(null);
-
-  const handleOpenUpdateForm = (employee?: IResponseObject) => {
-    employee && setUpdatedEmployee(employee);
-    setUpdateFormOpen(true);
-  };
-
-  useEffect(() => {
-    setMaxPageNumber(Math.ceil(employeesData.length / 5));
-    setTableData([...employeesData.slice(0, 5)]);
-    setCurrentPage(1);
-  }, [employeesData]);
-
-  useEffect(() => {
-    currentPage === maxPageNumber
-      ? setTableData(employeesData.slice((currentPage - 1) * 5))
-      : setTableData(employeesData.slice((currentPage - 1) * 5, currentPage * 5));
-  }, [currentPage]);
-
-  const handlePageChange = (type: 'next' | 'prev') => {
-    type === 'next' ? setCurrentPage(currentPage + 1) : setCurrentPage(currentPage - 1);
-  };
-
+const TableView = ({
+  isAddFormOpen,
+  isUpdateFormOpen,
+  updatedEmployee,
+  tableData,
+  handleChangeAddFormVisibility,
+  handleChangeUpdateFormVisibility,
+  handlePageChange,
+  currentPage,
+  maxPageNumber,
+  handleSubmit,
+  newID,
+  handleRemoveEmployee,
+}: ITableView): JSX.Element => {
   return (
     <div className="tableview">
-      {isAddFormOpen && <EmployeeForm handleClose={() => setAddFormOpen(false)} />}
+      {isAddFormOpen && (
+        <EmployeeForm handleClose={handleChangeAddFormVisibility} handleSubmit={handleSubmit} />
+      )}
       {isUpdateFormOpen && (
-        <EmployeeForm employeeData={updatedEmployee} handleClose={() => setUpdateFormOpen(false)} />
+        <EmployeeForm
+          newID={newID}
+          employeeData={updatedEmployee}
+          handleSubmit={handleSubmit}
+          handleClose={handleChangeUpdateFormVisibility}
+        />
       )}
       <button
         className="tableview__button tableview__button--add"
-        onClick={() => setAddFormOpen(true)}
+        onClick={handleChangeAddFormVisibility}
       >
         Add
       </button>
-      <Table tableData={tableData} handleOpenUpdateForm={handleOpenUpdateForm} />
+      <Table
+        tableData={tableData}
+        handleOpenUpdateForm={handleChangeUpdateFormVisibility}
+        handleRemoveEmployee={handleRemoveEmployee}
+      />
       <div className="tableview__navigation">
         <button
           className="tableview__button"
