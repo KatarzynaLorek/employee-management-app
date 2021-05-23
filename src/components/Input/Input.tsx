@@ -10,13 +10,13 @@ interface ICommonInputProps {
 }
 
 interface IChartInputProps extends ICommonInputProps {
-  chartType: true;
-  changeType: (type: ChartType) => void;
+  isChartType: true;
+  handleChange: (type: ChartType) => void;
 }
 
 interface ISortInputProps extends ICommonInputProps {
-  chartType?: false;
-  changeType: (type: SortType) => void;
+  isChartType?: false;
+  handleChange: (type: SortType) => void;
 }
 
 type IInputProps = IChartInputProps | ISortInputProps;
@@ -31,9 +31,9 @@ const Input = (props: IInputProps): JSX.Element => {
         className="input_select"
         name={props.type}
         onChange={(e) => {
-          props.chartType
-            ? props.changeType(e.target.value as ChartType)
-            : props.changeType(e.target.value as SortType);
+          props.isChartType
+            ? props.handleChange(e.target.value as ChartType)
+            : props.handleChange(e.target.value as SortType);
         }}
       >
         {props.options.map((option) => (
