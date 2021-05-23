@@ -1,21 +1,51 @@
 import React from 'react';
-import { getByText, render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import TableRow from './TableRow';
+import { mockEmployeeData } from '../../../mocks/employeeData';
+
+const mockFn1 = jest.fn();
+const mockFn2 = jest.fn();
 
 describe('TableRow component', () => {
-  it('renders properly', () => {
-    const { getByText } = render(<TableRow />);
-    expect(getByText('Name')).toBeInTheDocument();
-  });
-
   it('renders title row', () => {
-    const { getByText } = render(<TableRow isTitle />);
-    expect(getByText('Actions')).toBeInTheDocument;
+    const container = render(<TableRow isTitle />);
+    expect(container.baseElement).toMatchSnapshot();
   });
 
   it('renders normal row', () => {
-    const { getByText, container } = render(<TableRow />);
-    expect(getByText('Update')).toBeInTheDocument;
-    expect(container).not.toHaveTextContent('Actions');
+    const container = render(
+      <TableRow
+        employeeData={mockEmployeeData}
+        handleRemoveEmployee={mockFn1}
+        handleOpenUpdateForm={mockFn2}
+      />,
+    );
+    expect(container.baseElement).toMatchSnapshot();
+  });
+
+  it('runs update function when click on update button', () => {
+    const { getByRole } = render(
+      <TableRow
+        employeeData={mockEmployeeData}
+        handleRemoveEmployee={mockFn1}
+        handleOpenUpdateForm={mockFn2}
+      />,
+    );
+    const updateBtn = getByRole('button', { name: /update/i });
+    fireEvent.click(updateBtn);
+    expect(mockFn2.mock.calls.length).toBe(1);
+  });
+
+  it('runs remove function when click on delete button', () => {
+    const { getByRole } = render(
+      <TableRow
+        employeeData={mockEmployeeData}
+        handleRemoveEmployee={mockFn1}
+        handleOpenUpdateForm={mockFn2}
+      />,
+    );
+    const deleteBtn = getByRole('button', { name: /delete/i });
+    fireEvent.click(deleteBtn);
+    expect(mockFn1.mock.calls.length).toBe(1);
   });
 });

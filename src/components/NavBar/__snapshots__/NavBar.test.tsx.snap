@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar component renders NavBar properly 1`] = `
+<body>
+  <div>
+    <div
+      class="navbar"
+    >
+      <a
+        aria-current="page"
+        class="navbar__title active"
+        href="/"
+      >
+        Employee management app
+      </a>
+      <nav
+        class="navbar__navigation"
+      >
+        <a
+          aria-current="page"
+          class="navbar__button navbar__button--active"
+          href="/"
+        >
+          Table
+        </a>
+        <a
+          class="navbar__button"
+          href="/charts"
+        >
+          Charts
+        </a>
+      </nav>
+    </div>
+  </div>
+</body>
+`;

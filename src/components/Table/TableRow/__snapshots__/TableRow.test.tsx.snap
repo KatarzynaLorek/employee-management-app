@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableRow component renders normal row 1`] = `
+<body>
+  <div>
+    <div
+      class="row"
+    >
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          First Name
+        </p>
+        <p>
+          mockFirstName
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Last Name
+        </p>
+        <p>
+          mockLastname
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Department
+        </p>
+        <p>
+          IT
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Position
+        </p>
+        <p>
+          junior
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <button
+          class="row__button row__button--update"
+        >
+          Update
+        </button>
+        <button
+          class="row__button row__button--delete"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`TableRow component renders title row 1`] = `
+<body>
+  <div>
+    <div
+      class="row row--title"
+    >
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          First Name
+        </p>
+        <p>
+          First Name
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Last Name
+        </p>
+        <p>
+          Last Name
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Department
+        </p>
+        <p>
+          Department
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        <p
+          class="row__label"
+        >
+          Position
+        </p>
+        <p>
+          Position
+        </p>
+      </div>
+      <div
+        class="row__part"
+      >
+        Actions
+      </div>
+    </div>
+  </div>
+</body>
+`;

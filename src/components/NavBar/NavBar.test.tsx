@@ -15,7 +15,7 @@ const renderNavBar = () => {
 
 describe('NavBar component', () => {
   it('renders NavBar properly', () => {
-    const { getByText } = renderNavBar();
-    expect(getByText('Employee management app')).toBeInTheDocument();
+    const container = renderNavBar();
+    expect(container.baseElement).toMatchSnapshot();
   });
 });

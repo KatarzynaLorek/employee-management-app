@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chart component renders bar chart with sorting by department 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`Chart component renders bar chart with sorting by position 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`Chart component renders doughnut chart with sorting by department 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`Chart component renders doughnut chart with sorting by position 1`] = `
+<body>
+  <div />
+</body>
+`;

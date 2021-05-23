@@ -1,20 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TableView from './TableView';
+import ChartView from './ChartView';
 import { mockEmployeeData } from '../../mocks/employeeData';
 
 const mockFn = jest.fn();
 
 describe('TableView component', () => {
   it('renders properly', () => {
-    const container = render(
-      <TableView
-        employeesData={[mockEmployeeData]}
-        handleAddEmployee={mockFn}
-        handleUpdateEmployee={mockFn}
-        handleRemoveEmployee={mockFn}
-      />,
-    );
+    const container = render(<ChartView employeesData={[mockEmployeeData]} />);
     expect(container.baseElement).toMatchSnapshot();
   });
 });

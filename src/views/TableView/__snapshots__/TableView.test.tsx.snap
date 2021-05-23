@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableView component renders properly 1`] = `
+<body>
+  <div>
+    <div
+      class="tableview"
+    >
+      <button
+        class="tableview__button tableview__button--add"
+      >
+        Add
+      </button>
+      <div
+        class="table"
+      >
+        <div
+          class="row row--title"
+        >
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              First Name
+            </p>
+            <p>
+              First Name
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Last Name
+            </p>
+            <p>
+              Last Name
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Department
+            </p>
+            <p>
+              Department
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Position
+            </p>
+            <p>
+              Position
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            Actions
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              First Name
+            </p>
+            <p>
+              mockFirstName
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Last Name
+            </p>
+            <p>
+              mockLastname
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Department
+            </p>
+            <p>
+              IT
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <p
+              class="row__label"
+            >
+              Position
+            </p>
+            <p>
+              junior
+            </p>
+          </div>
+          <div
+            class="row__part"
+          >
+            <button
+              class="row__button row__button--update"
+            >
+              Update
+            </button>
+            <button
+              class="row__button row__button--delete"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tableview__navigation"
+      >
+        <button
+          class="tableview__button"
+          disabled=""
+        >
+          Prev
+        </button>
+        <button
+          class="tableview__button"
+          disabled=""
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

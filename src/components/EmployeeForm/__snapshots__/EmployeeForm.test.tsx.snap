@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeForm component renders properly an add form 1`] = `
+<body>
+  <div>
+    <div
+      class="form__wrapper form__wrapper--outer"
+    >
+      <div
+        class="form"
+      >
+        <button
+          aria-label="closeButton"
+          class="form__button form__button--close"
+        >
+          <i
+            class="fas fa-times"
+          />
+        </button>
+        <h1
+          class="form__title"
+        >
+          Add new employee
+        </h1>
+        <form
+          action="#"
+          class="form__wrapper form__wrapper--inner"
+          name="addForm"
+        >
+          <label
+            class="form__label"
+            for="firstName"
+          >
+            First Name
+          </label>
+          <input
+            autocomplete="off"
+            class="form__input"
+            id="firstName"
+            name="firstName"
+            placeholder="John"
+            value=""
+          />
+          <label
+            class="form__label"
+            for="lastName"
+          >
+            Last Name
+          </label>
+          <input
+            autocomplete="off"
+            class="form__input"
+            id="lastName"
+            name="lastName"
+            placeholder="Doe"
+            value=""
+          />
+          <label
+            class="form__label"
+            for="department"
+          >
+            Department
+          </label>
+          <select
+            class="form__input"
+            id="department"
+            name="department"
+          >
+            <option
+              value="accountancy"
+            >
+              Accountancy
+            </option>
+            <option
+              value="IT"
+            >
+              IT
+            </option>
+            <option
+              value="marketing"
+            >
+              Marketing
+            </option>
+            <option
+              value="sales"
+            >
+              Sales
+            </option>
+          </select>
+          <label
+            class="form__label"
+            for="position"
+          >
+            Position
+          </label>
+          <select
+            class="form__input"
+            id="position"
+            name="position"
+            type="text"
+          >
+            <option
+              value="junior"
+            >
+              Junior
+            </option>
+            <option
+              value="regular"
+            >
+              Regular
+            </option>
+            <option
+              value="senior"
+            >
+              Senior
+            </option>
+            <option
+              value="manager"
+            >
+              Manager
+            </option>
+          </select>
+          <button
+            class="form__button form__button--submit"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`EmployeeForm component renders properly an update form 1`] = `
+<body>
+  <div>
+    <div
+      class="form__wrapper form__wrapper--outer"
+    >
+      <div
+        class="form"
+      >
+        <button
+          aria-label="closeButton"
+          class="form__button form__button--close"
+        >
+          <i
+            class="fas fa-times"
+          />
+        </button>
+        <h1
+          class="form__title"
+        >
+          Update Employee Data
+        </h1>
+        <form
+          action="#"
+          class="form__wrapper form__wrapper--inner"
+          name="updateForm"
+        >
+          <label
+            class="form__label"
+            for="firstName"
+          >
+            First Name
+          </label>
+          <input
+            autocomplete="off"
+            class="form__input"
+            id="firstName"
+            name="firstName"
+            placeholder="John"
+            value="mockFirstName"
+          />
+          <label
+            class="form__label"
+            for="lastName"
+          >
+            Last Name
+          </label>
+          <input
+            autocomplete="off"
+            class="form__input"
+            id="lastName"
+            name="lastName"
+            placeholder="Doe"
+            value="mockLastname"
+          />
+          <label
+            class="form__label"
+            for="department"
+          >
+            Department
+          </label>
+          <select
+            class="form__input"
+            id="department"
+            name="department"
+          >
+            <option
+              value="accountancy"
+            >
+              Accountancy
+            </option>
+            <option
+              value="IT"
+            >
+              IT
+            </option>
+            <option
+              value="marketing"
+            >
+              Marketing
+            </option>
+            <option
+              value="sales"
+            >
+              Sales
+            </option>
+          </select>
+          <label
+            class="form__label"
+            for="position"
+          >
+            Position
+          </label>
+          <select
+            class="form__input"
+            id="position"
+            name="position"
+            type="text"
+          >
+            <option
+              value="junior"
+            >
+              Junior
+            </option>
+            <option
+              value="regular"
+            >
+              Regular
+            </option>
+            <option
+              value="senior"
+            >
+              Senior
+            </option>
+            <option
+              value="manager"
+            >
+              Manager
+            </option>
+          </select>
+          <button
+            class="form__button form__button--submit"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;

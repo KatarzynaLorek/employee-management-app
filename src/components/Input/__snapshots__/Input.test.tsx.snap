@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Element renders properly with isChartType props 1`] = `
+<body>
+  <div>
+    <div
+      class="mockContainerClass"
+    >
+      <label
+        class="input_label"
+        for="mockType"
+      >
+        mockLabel
+      </label>
+      <select
+        class="input_select"
+        name="mockType"
+      >
+        <option
+          value="mockOption1"
+        >
+          mockOption1
+        </option>
+        <option
+          value="mockOption2"
+        >
+          mockOption2
+        </option>
+      </select>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Input Element renders properly without isChartType props 1`] = `
+<body>
+  <div>
+    <div
+      class="mockContainerClass"
+    >
+      <label
+        class="input_label"
+        for="mockType"
+      >
+        mockLabel
+      </label>
+      <select
+        class="input_select"
+        name="mockType"
+      >
+        <option
+          value="mockOption1"
+        >
+          mockOption1
+        </option>
+        <option
+          value="mockOption2"
+        >
+          mockOption2
+        </option>
+      </select>
+    </div>
+  </div>
+</body>
+`;
