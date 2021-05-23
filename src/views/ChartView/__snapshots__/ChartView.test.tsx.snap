@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartView component renders properly 1`] = `
+<body>
+  <div>
+    <div
+      class="chartview"
+    >
+      <div
+        class="chartview_navbar"
+      >
+        <div
+          class="chartview_input"
+        >
+          <label
+            class="input_label"
+            for="chartInput"
+          >
+            Chart Type
+          </label>
+          <select
+            class="input_select"
+            name="chartInput"
+          >
+            <option
+              value="bar"
+            >
+              bar
+            </option>
+            <option
+              value="doughnut"
+            >
+              doughnut
+            </option>
+          </select>
+        </div>
+        <div
+          class="chartview_input"
+        >
+          <label
+            class="input_label"
+            for="chartInput"
+          >
+            Sort by
+          </label>
+          <select
+            class="input_select"
+            name="chartInput"
+          >
+            <option
+              value="department"
+            >
+              department
+            </option>
+            <option
+              value="position"
+            >
+              position
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="chartview_chartContainer"
+      />
+    </div>
+  </div>
+</body>
+`;
