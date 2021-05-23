@@ -1,39 +1,44 @@
 import React from 'react';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { removeEmployee } from '../../../store/actions/actions';
 import { IResponseObject } from '../../../types/responses';
 import './TableRow.scss';
 
-interface TableRowProps {
-  employeeData?: IResponseObject;
-  handleClick: ((employee?: IResponseObject) => void) | (() => void);
+interface ITableRow {
+  isTitle?: false;
+  employeeData: IResponseObject;
+  handleOpenUpdateForm: (employee: IResponseObject) => void;
+  handleRemoveEmployee: (employee: IResponseObject) => void;
 }
 
-const TableRow = ({ employeeData, handleClick }: TableRowProps): JSX.Element => {
-  const dispatch = useAppDispatch();
+interface ITableRowTitle {
+  isTitle: true;
+}
+
+type TableRowProps = ITableRow | ITableRowTitle;
+
+const TableRow = (props: TableRowProps): JSX.Element => {
   return (
-    <div className={employeeData ? 'row' : 'row row--title'}>
+    <div className={!props.isTitle ? 'row' : 'row row--title'}>
       <div className="row__part">
         <p className="row__label">First Name</p>
-        <p>{employeeData ? employeeData.firstName : 'First Name'}</p>
+        <p>{!props.isTitle ? props.employeeData.firstName : 'First Name'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Last Name</p>
-        <p>{employeeData ? employeeData.lastName : 'Last Name'}</p>
+        <p>{!props.isTitle ? props.employeeData.lastName : 'Last Name'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Department</p>
-        <p>{employeeData ? employeeData.department : 'Department'}</p>
+        <p>{!props.isTitle ? props.employeeData.department : 'Department'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Position</p>
-        <p>{employeeData ? employeeData.position : 'Position'}</p>
+        <p>{!props.isTitle ? props.employeeData.position : 'Position'}</p>
       </div>
       <div className="row__part">
-        {employeeData ? (
+        {!props.isTitle ? (
           <>
             <button
-              onClick={() => (employeeData ? handleClick(employeeData) : null)}
+              onClick={() => props.handleOpenUpdateForm(props.employeeData)}
               className="row__button row__button--update"
             >
               Update
@@ -41,10 +46,10 @@ const TableRow = ({ employeeData, handleClick }: TableRowProps): JSX.Element => 
             <button
               className="row__button row__button--delete"
               onClick={() => {
-                dispatch(removeEmployee(employeeData.id));
+                props.handleRemoveEmployee(props.employeeData);
               }}
             >
-              delete
+              Delete
             </button>
           </>
         ) : (

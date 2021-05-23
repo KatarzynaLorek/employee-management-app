@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
 import Header from '../NavBar/NavBar';
-import TableView from '../../views/TableView/TableView';
-import ChartView from '../../views/ChartView/ChartView';
+import ChartViewContainer from '../../views/ChartView/ChartView.container';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { fetchEmployeesData } from '../../store/actions/actions';
+import TableViewContainer from '../../views/TableView/TableView.container';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,8 +17,8 @@ const App: React.FC = () => {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Route exact path="/" component={TableView}></Route>
-        <Route exact path="/charts" component={ChartView}></Route>
+        <Route exact path="/" component={TableViewContainer}></Route>
+        <Route exact path="/charts" component={ChartViewContainer}></Route>
       </div>
     </BrowserRouter>
   );

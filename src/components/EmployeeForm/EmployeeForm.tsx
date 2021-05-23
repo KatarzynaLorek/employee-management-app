@@ -2,17 +2,15 @@ import React from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import './EmployeeForm.scss';
 import { IResponseObject } from '../../types/responses';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { updateEmployee, addEmployee } from '../../store/actions/actions';
 
-interface IFormProps {
+interface IForm {
   handleClose: () => void;
   employeeData?: IResponseObject | null;
+  submitAction: (employee: IResponseObject) => Promise<any>;
+  newID?: string;
 }
 
-const EmployeeForm = ({ handleClose, employeeData }: IFormProps): JSX.Element => {
-  const newID = String(useAppSelector((state) => state.rootReducer.employees.length) + 1);
-
+const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm): JSX.Element => {
   const initialValues: IResponseObject = {
     id: employeeData?.id || newID,
     firstName: employeeData?.firstName || '',
@@ -21,10 +19,11 @@ const EmployeeForm = ({ handleClose, employeeData }: IFormProps): JSX.Element =>
     position: employeeData?.position || 'junior',
   };
 
-  const dispatch = useAppDispatch();
-
-  const handleSubmit = (newValues: IResponseObject, setSubmitting: (boolean: boolean) => void) => {
-    employeeData ? dispatch(updateEmployee(newValues)) : dispatch(addEmployee(newValues));
+  const handleSubmit = (
+    newValues: IResponseObject,
+    setSubmitting: (boolean: boolean) => void,
+  ): void => {
+    submitAction(newValues);
     setSubmitting(false);
     handleClose();
   };
