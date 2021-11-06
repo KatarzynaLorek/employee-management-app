@@ -1,5 +1,5 @@
 export interface IResponseObject {
-  id?: string;
+  id: string;
   firstName: string;
   lastName: string;
   department: 'accountancy' | 'IT' | 'sales' | 'marketing';

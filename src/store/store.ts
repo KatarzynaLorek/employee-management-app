@@ -1,8 +1,9 @@
-import rootReducer from './reducers/rootReducer';
 import { configureStore } from '@reduxjs/toolkit';
 
+import employeesReducer from './reducers/employees';
+
 export const store = configureStore({
-  reducer: { rootReducer },
+  reducer: { employees: employeesReducer },
   devTools: true,
 });
 
