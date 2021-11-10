@@ -15,12 +15,14 @@
     justify-content: center;
 
     &--inner {
+      @extend .form__wrapper;
       flex-direction: column;
       max-width: 600px;
       width: 100%;
     }
 
     &--outer {
+      @extend .form__wrapper;
       position: fixed;
       top: 0;
       left: 0;
@@ -43,6 +45,7 @@
     cursor: pointer;
 
     &--close {
+      @extend .form__button;
       align-self: flex-end;
       width: 40px;
       margin: 5px 5px;
@@ -58,6 +61,7 @@
     }
 
     &--submit {
+      @extend .form__button;
       width: 100px;
       margin-top: 70px;
       border: 2px solid #77b28c;
@@ -98,9 +102,19 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1250px) {
   .form {
-    overflow: scroll;
-    scrollbar-width: 0;
+    &__wrapper--outer {
+      padding-top: 220px;
+    }
+  }
+}
+
+@media (max-height: 800px) {
+  .form {
+    &__wrapper--outer {
+      overflow: scroll;
+      scrollbar-width: 0;
+    }
   }
 }

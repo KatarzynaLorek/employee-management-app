@@ -58,12 +58,12 @@ exports[`TableRow component renders normal row 1`] = `
         class="row__part"
       >
         <button
-          class="row__button row__button--update"
+          class="row__button--update"
         >
           Update
         </button>
         <button
-          class="row__button row__button--delete"
+          class="row__button--delete"
         >
           Delete
         </button>
@@ -77,7 +77,7 @@ exports[`TableRow component renders title row 1`] = `
 <body>
   <div>
     <div
-      class="row row--title"
+      class="row--title"
     >
       <div
         class="row__part"

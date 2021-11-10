@@ -4,6 +4,7 @@
   border-top: 1px solid #ddd;
 
   &--title {
+    @extend .row;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ddd;
     text-transform: uppercase;
@@ -33,6 +34,7 @@
     cursor: pointer;
 
     &--update {
+      @extend .row__button;
       border: 2px solid orange;
 
       &:hover {
@@ -42,6 +44,7 @@
     }
 
     &--delete {
+      @extend .row__button;
       border: 2px solid red;
 
       &:hover {

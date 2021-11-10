@@ -7,7 +7,7 @@ exports[`Table component renders properly with 3 rows 1`] = `
       class="table"
     >
       <div
-        class="row row--title"
+        class="row--title"
       >
         <div
           class="row__part"
@@ -118,12 +118,12 @@ exports[`Table component renders properly with 3 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -184,12 +184,12 @@ exports[`Table component renders properly with 3 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -250,12 +250,12 @@ exports[`Table component renders properly with 3 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -273,7 +273,7 @@ exports[`Table component renders properly with 5 rows 1`] = `
       class="table"
     >
       <div
-        class="row row--title"
+        class="row--title"
       >
         <div
           class="row__part"
@@ -384,12 +384,12 @@ exports[`Table component renders properly with 5 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -450,12 +450,12 @@ exports[`Table component renders properly with 5 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -516,12 +516,12 @@ exports[`Table component renders properly with 5 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -582,12 +582,12 @@ exports[`Table component renders properly with 5 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>
@@ -648,12 +648,12 @@ exports[`Table component renders properly with 5 rows 1`] = `
           class="row__part"
         >
           <button
-            class="row__button row__button--update"
+            class="row__button--update"
           >
             Update
           </button>
           <button
-            class="row__button row__button--delete"
+            class="row__button--delete"
           >
             Delete
           </button>

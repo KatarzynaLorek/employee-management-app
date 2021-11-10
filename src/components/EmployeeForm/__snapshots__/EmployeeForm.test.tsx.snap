@@ -4,14 +4,14 @@ exports[`EmployeeForm component renders properly an add form 1`] = `
 <body>
   <div>
     <div
-      class="form__wrapper form__wrapper--outer"
+      class="form__wrapper--outer"
     >
       <div
         class="form"
       >
         <button
           aria-label="closeButton"
-          class="form__button form__button--close"
+          class="form__button--close"
         >
           <i
             class="fas fa-times"
@@ -24,7 +24,7 @@ exports[`EmployeeForm component renders properly an add form 1`] = `
         </h1>
         <form
           action="#"
-          class="form__wrapper form__wrapper--inner"
+          class="form__wrapper--inner"
           name="addForm"
         >
           <label
@@ -121,7 +121,7 @@ exports[`EmployeeForm component renders properly an add form 1`] = `
             </option>
           </select>
           <button
-            class="form__button form__button--submit"
+            class=" form__button--submit"
             type="submit"
           >
             Submit
@@ -137,14 +137,14 @@ exports[`EmployeeForm component renders properly an update form 1`] = `
 <body>
   <div>
     <div
-      class="form__wrapper form__wrapper--outer"
+      class="form__wrapper--outer"
     >
       <div
         class="form"
       >
         <button
           aria-label="closeButton"
-          class="form__button form__button--close"
+          class="form__button--close"
         >
           <i
             class="fas fa-times"
@@ -157,7 +157,7 @@ exports[`EmployeeForm component renders properly an update form 1`] = `
         </h1>
         <form
           action="#"
-          class="form__wrapper form__wrapper--inner"
+          class="form__wrapper--inner"
           name="updateForm"
         >
           <label
@@ -254,7 +254,7 @@ exports[`EmployeeForm component renders properly an update form 1`] = `
             </option>
           </select>
           <button
-            class="form__button form__button--submit"
+            class=" form__button--submit"
             type="submit"
           >
             Update

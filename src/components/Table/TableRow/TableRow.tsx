@@ -17,7 +17,7 @@ type TableRowProps = ITableRow | ITableRowTitle;
 
 const TableRow = (props: TableRowProps): JSX.Element => {
   return (
-    <div className={!props.isTitle ? 'row' : 'row row--title'}>
+    <div className={!props.isTitle ? 'row' : 'row--title'}>
       <div className="row__part">
         <p className="row__label">First Name</p>
         <p>{!props.isTitle ? props.employeeData.firstName : 'First Name'}</p>
@@ -39,12 +39,12 @@ const TableRow = (props: TableRowProps): JSX.Element => {
           <>
             <button
               onClick={() => props.handleOpenUpdateForm(props.employeeData)}
-              className="row__button row__button--update"
+              className="row__button--update"
             >
               Update
             </button>
             <button
-              className="row__button row__button--delete"
+              className="row__button--delete"
               onClick={() => {
                 props.handleRemoveEmployee(props.employeeData);
               }}
