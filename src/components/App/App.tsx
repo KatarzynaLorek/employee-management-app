@@ -4,14 +4,14 @@ import './App.scss';
 import Header from '../NavBar/NavBar';
 import ChartViewContainer from '../../views/ChartView/ChartView.container';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { fetchEmployeesData } from '../../store/actions/actions';
+import { fetchEmployees } from '../../store/actions/employees';
 import TableViewContainer from '../../views/TableView/TableView.container';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchEmployeesData()), [];
-  });
+    dispatch(fetchEmployees());
+  }, []);
 
   return (
     <BrowserRouter>
