@@ -1,11 +1,12 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { addEmployee, removeEmployee, updateEmployee } from '../../store/actions/actions';
+import { addEmployee, removeEmployee, updateEmployee } from '../../store/actions/employees';
+import { selectAll } from '../../store/reducers/employees';
 import { IResponseObject } from '../../types/responses';
 import TableView from './TableView';
 
 const TableViewContainer: React.FC = () => {
-  const employeesData: IResponseObject[] = useAppSelector((state) => state.rootReducer.employees);
+  const employeesData = useAppSelector((state) => selectAll(state));
   const dispatch = useAppDispatch();
 
   const handleAddEmployee = (employee: IResponseObject): Promise<any> =>
@@ -15,7 +16,7 @@ const TableViewContainer: React.FC = () => {
     dispatch(updateEmployee(employee));
 
   const handleRemoveEmployee = (employee: IResponseObject): Promise<any> =>
-    dispatch(removeEmployee(employee.id));
+    dispatch(removeEmployee(employee));
 
   return (
     <TableView
