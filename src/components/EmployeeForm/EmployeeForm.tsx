@@ -1,7 +1,8 @@
 import React from 'react';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import './EmployeeForm.scss';
 import { IResponseObject } from '../../types/responses';
+import { IEmployeeForm } from './EmployeeForm.types';
 
 interface IForm {
   handleClose: () => void;
@@ -10,22 +11,13 @@ interface IForm {
   newID?: string;
 }
 
-const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm): JSX.Element => {
+const EmployeeForm: React.FC<IEmployeeForm> = ({ handleClose, submitAction, employeeData, id }) => {
   const initialValues: IResponseObject = {
-    id: employeeData?.id || newID || '1',
+    id: employeeData?.id || id,
     firstName: employeeData?.firstName || '',
     lastName: employeeData?.lastName || '',
     department: employeeData?.department || 'accountancy',
     position: employeeData?.position || 'junior',
-  };
-
-  const handleSubmit = (
-    newValues: IResponseObject,
-    setSubmitting: (boolean: boolean) => void,
-  ): void => {
-    submitAction(newValues);
-    setSubmitting(false);
-    handleClose();
   };
 
   const validateTextInput = (values: IResponseObject) => {
@@ -51,11 +43,9 @@ const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm)
         <Formik
           validate={validateTextInput}
           initialValues={initialValues}
-          onSubmit={(
-            values: IResponseObject,
-            { setSubmitting }: FormikHelpers<IResponseObject>,
-          ) => {
-            handleSubmit(values, setSubmitting);
+          onSubmit={(values) => {
+            submitAction(values);
+            handleClose();
           }}
         >
           {({ errors, touched }) => (
