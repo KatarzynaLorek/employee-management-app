@@ -60,10 +60,7 @@ const TableView = ({
           handleClose={changeUpdateFormVisibility}
         />
       )}
-      <button
-        className="tableview__button tableview__button--add"
-        onClick={changeAddFormVisibility}
-      >
+      <button className="tableview__button--add" onClick={changeAddFormVisibility}>
         Add
       </button>
       <Table
