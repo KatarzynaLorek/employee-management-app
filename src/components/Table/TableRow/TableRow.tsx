@@ -1,53 +1,43 @@
 import React from 'react';
-import { IResponseObject } from '../../../types/responses';
 import './TableRow.scss';
+import { ITableRow, TableRowVariant } from './TableRow.types';
 
-interface ITableRow {
-  isTitle?: false;
-  employeeData: IResponseObject;
-  handleOpenUpdateForm: (employee: IResponseObject) => void;
-  handleRemoveEmployee: (employee: IResponseObject) => void;
-}
-
-interface ITableRowTitle {
-  isTitle: true;
-}
-
-type TableRowProps = ITableRow | ITableRowTitle;
-
-const TableRow = (props: TableRowProps): JSX.Element => {
+const TableRow: React.FC<ITableRow> = ({
+  variant,
+  employeeData,
+  handleUpdateButton,
+  handleDeleteButton,
+}) => {
   return (
-    <div className={!props.isTitle ? 'row' : 'row--title'}>
+    <div className={variant === TableRowVariant.title ? 'row--title' : 'row'}>
       <div className="row__part">
         <p className="row__label">First Name</p>
-        <p>{!props.isTitle ? props.employeeData.firstName : 'First Name'}</p>
+        <p>{employeeData?.firstName || 'First Name'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Last Name</p>
-        <p>{!props.isTitle ? props.employeeData.lastName : 'Last Name'}</p>
+        <p>{employeeData?.lastName || 'Last Name'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Department</p>
-        <p>{!props.isTitle ? props.employeeData.department : 'Department'}</p>
+        <p>{employeeData?.department || 'Department'}</p>
       </div>
       <div className="row__part">
         <p className="row__label">Position</p>
-        <p>{!props.isTitle ? props.employeeData.position : 'Position'}</p>
+        <p>{employeeData?.position || 'Position'}</p>
       </div>
       <div className="row__part">
-        {!props.isTitle ? (
+        {variant === TableRowVariant.normal ? (
           <>
             <button
-              onClick={() => props.handleOpenUpdateForm(props.employeeData)}
+              onClick={() => employeeData && handleUpdateButton && handleUpdateButton(employeeData)}
               className="row__button--update"
             >
               Update
             </button>
             <button
               className="row__button--delete"
-              onClick={() => {
-                props.handleRemoveEmployee(props.employeeData);
-              }}
+              onClick={() => employeeData && handleDeleteButton && handleDeleteButton(employeeData)}
             >
               Delete
             </button>
