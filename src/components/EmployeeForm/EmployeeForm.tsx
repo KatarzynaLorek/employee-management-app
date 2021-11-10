@@ -12,7 +12,7 @@ interface IForm {
 
 const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm): JSX.Element => {
   const initialValues: IResponseObject = {
-    id: employeeData?.id || newID,
+    id: employeeData?.id || newID || '1',
     firstName: employeeData?.firstName || '',
     lastName: employeeData?.lastName || '',
     department: employeeData?.department || 'accountancy',
@@ -40,13 +40,9 @@ const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm)
   };
 
   return (
-    <div className="form__wrapper form__wrapper--outer">
+    <div className="form__wrapper--outer">
       <div className="form">
-        <button
-          aria-label="closeButton"
-          className="form__button form__button--close"
-          onClick={handleClose}
-        >
+        <button aria-label="closeButton" className="form__button--close" onClick={handleClose}>
           <i className="fas fa-times"></i>
         </button>
         <h1 className="form__title">
@@ -63,10 +59,7 @@ const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm)
           }}
         >
           {({ errors, touched }) => (
-            <Form
-              name={employeeData ? 'updateForm' : 'addForm'}
-              className="form__wrapper form__wrapper--inner"
-            >
+            <Form name={employeeData ? 'updateForm' : 'addForm'} className="form__wrapper--inner">
               <label className="form__label" htmlFor="firstName">
                 First Name
               </label>
@@ -111,7 +104,7 @@ const EmployeeForm = ({ handleClose, submitAction, employeeData, newID }: IForm)
                 <option value="senior">Senior</option>
                 <option value="manager">Manager</option>
               </Field>
-              <button className="form__button form__button--submit" type="submit">
+              <button className=" form__button--submit" type="submit">
                 {employeeData ? 'Update' : 'Submit'}
               </button>
             </Form>
