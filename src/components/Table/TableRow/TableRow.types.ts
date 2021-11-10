@@ -8,6 +8,6 @@ export enum TableRowVariant {
 export interface ITableRow {
   variant: TableRowVariant;
   employeeData?: IResponseObject;
-  handleUpdateButton?: (employee: IResponseObject) => void;
-  handleDeleteButton?: (employee: IResponseObject) => void;
+  handleUpdateButtonClick?: (employee: IResponseObject) => void;
+  handleDeleteButtonClick?: (employee: IResponseObject) => void;
 }

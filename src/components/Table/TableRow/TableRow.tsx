@@ -5,8 +5,8 @@ import { ITableRow, TableRowVariant } from './TableRow.types';
 const TableRow: React.FC<ITableRow> = ({
   variant,
   employeeData,
-  handleUpdateButton,
-  handleDeleteButton,
+  handleUpdateButtonClick,
+  handleDeleteButtonClick,
 }) => {
   return (
     <div className={variant === TableRowVariant.title ? 'row--title' : 'row'}>
@@ -30,14 +30,18 @@ const TableRow: React.FC<ITableRow> = ({
         {variant === TableRowVariant.normal ? (
           <>
             <button
-              onClick={() => employeeData && handleUpdateButton && handleUpdateButton(employeeData)}
+              onClick={() =>
+                employeeData && handleUpdateButtonClick && handleUpdateButtonClick(employeeData)
+              }
               className="row__button--update"
             >
               Update
             </button>
             <button
               className="row__button--delete"
-              onClick={() => employeeData && handleDeleteButton && handleDeleteButton(employeeData)}
+              onClick={() =>
+                employeeData && handleDeleteButtonClick && handleDeleteButtonClick(employeeData)
+              }
             >
               Delete
             </button>
