@@ -27,7 +27,7 @@ export const addEmployee = createAsyncThunk<
   { employee: IResponseObject },
   IResponseObject,
   { rejectValue: { data: { error_message: string } } }
->('employees/fetchEmployees', async (employee, { rejectWithValue }) => {
+>('employees/addEmployees', async (employee, { rejectWithValue }) => {
   try {
     const response = await axios.post(url, employee);
     return { employee: response.data };
@@ -46,7 +46,7 @@ export const updateEmployee = createAsyncThunk<
   { employee: IResponseObject },
   IResponseObject,
   { rejectValue: { data: { error_message: string } } }
->('employees/fetchEmployees', async (employee, { rejectWithValue }) => {
+>('employees/updateEmployees', async (employee, { rejectWithValue }) => {
   try {
     const id = employee.id;
     const response = await axios.put(`${url}/${id}`, employee);
@@ -66,7 +66,7 @@ export const removeEmployee = createAsyncThunk<
   { employee: IResponseObject },
   IResponseObject,
   { rejectValue: { data: { error_message: string } } }
->('employees/fetchEmployees', async (employee, { rejectWithValue }) => {
+>('employees/removeEmployees', async (employee, { rejectWithValue }) => {
   try {
     const id = employee.id;
     const response = await axios.delete(`${url}/${id}`);
