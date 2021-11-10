@@ -7,7 +7,7 @@ exports[`TableView component renders properly 1`] = `
       class="tableview"
     >
       <button
-        class="tableview__button tableview__button--add"
+        class="tableview__button--add"
       >
         Add
       </button>
@@ -15,7 +15,7 @@ exports[`TableView component renders properly 1`] = `
         class="table"
       >
         <div
-          class="row row--title"
+          class="row--title"
         >
           <div
             class="row__part"
@@ -126,12 +126,12 @@ exports[`TableView component renders properly 1`] = `
             class="row__part"
           >
             <button
-              class="row__button row__button--update"
+              class="row__button--update"
             >
               Update
             </button>
             <button
-              class="row__button row__button--delete"
+              class="row__button--delete"
             >
               Delete
             </button>
