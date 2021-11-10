@@ -4,6 +4,7 @@ import Chart from '../../components/Chart/Chart';
 import Input from '../../components/Input/Input';
 import { ChartType, SortType } from '../../types/charts';
 import { IResponseObject } from '../../types/responses';
+import { InputVariant } from '../../components/Input/Input.types';
 
 const inputOptions: { chartType: ChartType[]; sortType: SortType[] } = {
   chartType: ['bar', 'doughnut'],
@@ -29,16 +30,15 @@ const ChartView = ({ employeesData }: IChartView): JSX.Element => {
   return (
     <div className="chartview">
       <div className="chartview_navbar">
-        <Input
-          isChartType
-          type="chartInput"
+        <Input<ChartType>
+          variant={InputVariant.chartType}
           options={inputOptions.chartType}
           label="Chart Type"
           containerClass="chartview_input"
           handleChange={changeChartType}
         />
-        <Input
-          type="chartInput"
+        <Input<SortType>
+          variant={InputVariant.sortingType}
           options={inputOptions.sortType}
           label="Sort by"
           containerClass="chartview_input"
