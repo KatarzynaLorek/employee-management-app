@@ -12,7 +12,7 @@ const ChartViewContainer = (): JSX.Element => {
 
   setTimeout(() => setData(employees), 200);
 
-  return <ChartView employeesData={data} />;
+  return <ChartView data={data} />;
 };
 
 export default ChartViewContainer;

@@ -3,20 +3,17 @@ import './ChartView.scss';
 import Chart from '../../components/Chart/Chart';
 import Input from '../../components/Input/Input';
 import { ChartType, SortType } from '../../types/charts';
-import { IResponseObject } from '../../types/responses';
+import { InputVariant } from '../../components/Input/Input.types';
+import { IChartView } from './ChartView.types';
 
-const inputOptions: { chartType: ChartType[]; sortType: SortType[] } = {
-  chartType: ['bar', 'doughnut'],
-  sortType: ['department', 'position'],
-};
-
-interface IChartView {
-  employeesData: IResponseObject[];
-}
-
-const ChartView = ({ employeesData }: IChartView): JSX.Element => {
+const ChartView: React.FC<IChartView> = ({ data }) => {
   const [sortType, setSortType] = useState<SortType>('department');
   const [chartType, setChartType] = useState<ChartType>('bar');
+
+  const inputOptions: { chartType: ChartType[]; sortType: SortType[] } = {
+    chartType: ['bar', 'doughnut'],
+    sortType: ['department', 'position'],
+  };
 
   const changeSortType = (type: SortType) => {
     setSortType(type);
@@ -29,16 +26,15 @@ const ChartView = ({ employeesData }: IChartView): JSX.Element => {
   return (
     <div className="chartview">
       <div className="chartview_navbar">
-        <Input
-          isChartType
-          type="chartInput"
+        <Input<ChartType>
+          variant={InputVariant.chartType}
           options={inputOptions.chartType}
           label="Chart Type"
           containerClass="chartview_input"
           handleChange={changeChartType}
         />
-        <Input
-          type="chartInput"
+        <Input<SortType>
+          variant={InputVariant.sortingType}
           options={inputOptions.sortType}
           label="Sort by"
           containerClass="chartview_input"
@@ -46,7 +42,7 @@ const ChartView = ({ employeesData }: IChartView): JSX.Element => {
         />
       </div>
       <div className="chartview_chartContainer">
-        <Chart data={employeesData} sortType={sortType} chartType={chartType} />
+        <Chart data={data} sortType={sortType} chartType={chartType} />
       </div>
     </div>
   );

@@ -1,27 +1,19 @@
 import React from 'react';
 import TableRow from './TableRow/TableRow';
 import './Table.scss';
-import { IResponseObject } from '../../types/responses';
+import { TableRowVariant } from './TableRow/TableRow.types';
+import { ITable } from './Table.types';
 
-interface ITableProps {
-  handleRemoveEmployee: (employee: IResponseObject) => Promise<any>;
-  handleOpenUpdateForm: (employee: IResponseObject) => void;
-  tableData: IResponseObject[];
-}
-
-const Table = ({
-  handleOpenUpdateForm,
-  handleRemoveEmployee,
-  tableData,
-}: ITableProps): JSX.Element => (
+const Table: React.FC<ITable> = ({ handleUpdateButtonClick, handleDeleteButtonClick, data }) => (
   <div className="table">
-    <TableRow isTitle />
-    {tableData.map((item) => (
+    <TableRow variant={TableRowVariant.title} />
+    {data.map((item) => (
       <TableRow
         key={item.id}
+        variant={TableRowVariant.normal}
         employeeData={item}
-        handleOpenUpdateForm={handleOpenUpdateForm}
-        handleRemoveEmployee={handleRemoveEmployee}
+        handleUpdateButtonClick={handleUpdateButtonClick}
+        handleDeleteButtonClick={handleDeleteButtonClick}
       ></TableRow>
     ))}
   </div>

@@ -3,70 +3,62 @@ import Table from '../../components/Table/Table';
 import './TableView.scss';
 import EmployeeForm from '../../components/EmployeeForm/EmployeeForm';
 import { IResponseObject } from '../../types/responses';
+import { ITableView } from './TableView.types';
 
-export interface ITableView {
-  employeesData: IResponseObject[];
-  handleAddEmployee: (employee: IResponseObject) => Promise<any>;
-  handleUpdateEmployee: (employee: IResponseObject) => Promise<any>;
-  handleRemoveEmployee: (employee: IResponseObject) => Promise<any>;
-}
-
-const TableView = ({
-  employeesData,
-  handleAddEmployee,
-  handleUpdateEmployee,
-  handleRemoveEmployee,
+const TableView: React.FC<ITableView> = ({
+  tableData,
+  addEmployee,
+  updateEmployee,
+  removeEmployee,
 }: ITableView): JSX.Element => {
-  const [isAddFormOpen, setAddFormOpen] = useState(false);
-  const [isUpdateFormOpen, setUpdateFormOpen] = useState(false);
+  const [isFormOpen, setFormOpen] = useState(false);
+  const [updatedEmployee, setUpdatedEmployee] = useState<IResponseObject | null>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [maxPageNumber, setMaxPageNumber] = useState(Math.ceil(employeesData.length / 5));
-  const [tableData, setTableData] = useState<IResponseObject[]>([]);
-  const [updatedEmployee, setUpdatedEmployee] = useState<IResponseObject | null>(null);
+  const [maxPageNumber, setMaxPageNumber] = useState(Math.ceil(tableData.length / 5));
+  const [tableRows, setTableRows] = useState<IResponseObject[]>([]);
+
+  const newID = (tableData.length + 1).toString();
 
   useEffect(() => {
-    setMaxPageNumber(Math.ceil(employeesData.length / 5));
-    setTableData(employeesData.slice(0, 5));
+    setMaxPageNumber(Math.ceil(tableData.length / 5));
+    setTableRows(tableData.slice(0, 5));
     setCurrentPage(1);
-  }, [employeesData]);
+  }, [tableData]);
 
   useEffect(() => {
-    console.log(employeesData.slice(0, 4));
     currentPage === maxPageNumber
-      ? setTableData(employeesData.slice((currentPage - 1) * 5))
-      : setTableData(employeesData.slice((currentPage - 1) * 5, currentPage * 5));
+      ? setTableRows(tableData.slice((currentPage - 1) * 5))
+      : setTableRows(tableData.slice((currentPage - 1) * 5, currentPage * 5));
   }, [currentPage]);
 
   const handlePageChange = (type: 'next' | 'prev'): void => {
     type === 'next' ? setCurrentPage(currentPage + 1) : setCurrentPage(currentPage - 1);
   };
-  const changeAddFormVisibility = (): void => {
-    setAddFormOpen(!isAddFormOpen);
+  const changeFormVisibility = (): void => {
+    updatedEmployee && setUpdatedEmployee(null);
+    setFormOpen(!isFormOpen);
   };
-  const changeUpdateFormVisibility = (employee?: IResponseObject): void => {
-    employee ? setUpdatedEmployee(employee) : setUpdatedEmployee(null);
-    setUpdateFormOpen(!isUpdateFormOpen);
-  };
+
   return (
     <div className="tableview">
-      {isAddFormOpen && (
-        <EmployeeForm handleClose={changeAddFormVisibility} submitAction={handleAddEmployee} />
-      )}
-      {isUpdateFormOpen && (
+      {isFormOpen && (
         <EmployeeForm
-          newID={String(employeesData.length + 1)}
-          employeeData={updatedEmployee}
-          submitAction={handleUpdateEmployee}
-          handleClose={changeUpdateFormVisibility}
+          id={newID}
+          employeeData={!!updatedEmployee ? updatedEmployee : undefined}
+          submitAction={!!updateEmployee ? updateEmployee : addEmployee}
+          handleClose={changeFormVisibility}
         />
       )}
-      <button className="tableview__button--add" onClick={changeAddFormVisibility}>
+      <button className="tableview__button--add" onClick={changeFormVisibility}>
         Add
       </button>
       <Table
-        tableData={tableData}
-        handleOpenUpdateForm={changeUpdateFormVisibility}
-        handleRemoveEmployee={handleRemoveEmployee}
+        data={tableRows}
+        handleUpdateButtonClick={(employee: IResponseObject) => {
+          setUpdatedEmployee(employee);
+          changeFormVisibility();
+        }}
+        handleDeleteButtonClick={removeEmployee}
       />
       <div className="tableview__navigation">
         <button

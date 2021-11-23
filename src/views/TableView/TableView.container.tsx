@@ -9,21 +9,24 @@ const TableViewContainer: React.FC = () => {
   const employeesData = useAppSelector((state) => selectAll(state));
   const dispatch = useAppDispatch();
 
-  const handleAddEmployee = (employee: IResponseObject): Promise<any> =>
+  const handleAddEmployee = (employee: IResponseObject): void => {
     dispatch(addEmployee(employee));
+  };
 
-  const handleUpdateEmployee = (employee: IResponseObject): Promise<any> =>
+  const handleUpdateEmployee = (employee: IResponseObject): void => {
     dispatch(updateEmployee(employee));
+  };
 
-  const handleRemoveEmployee = (employee: IResponseObject): Promise<any> =>
+  const handleRemoveEmployee = (employee: IResponseObject): void => {
     dispatch(removeEmployee(employee));
+  };
 
   return (
     <TableView
-      employeesData={employeesData}
-      handleAddEmployee={handleAddEmployee}
-      handleUpdateEmployee={handleUpdateEmployee}
-      handleRemoveEmployee={handleRemoveEmployee}
+      tableData={employeesData}
+      addEmployee={handleAddEmployee}
+      updateEmployee={handleUpdateEmployee}
+      removeEmployee={handleRemoveEmployee}
     />
   );
 };
